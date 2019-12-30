@@ -55,25 +55,25 @@ calcNewState<-function(xx,yy,ll){
 }
 calcNewState(2,3,0)
 
-for(k in 1:200){
-  print(k)
-  print(sum(cells$bug))
-  cells <- cells %>% bind_rows(layer(k)) %>% bind_rows(layer(-k))  
-  cells %>% 
-    rowwise %>% 
-    mutate(step1=calcNewState(x,y,level))%>% 
-    select(x,y,level,step1) %>% 
-    rename(bug=step1)->cells
-}
-sum(cells$bug)
-step51 %>% filter(abs(level)<27) -> cells
-cells %>% 
-  rowwise %>% 
-  mutate(step1=calcNewState(x,y,level))%>% 
-  select(x,y,level,step1) %>% 
-  rename(bug=step1)->cells
-cells->step52
-for(k in 31:100){
+# for(k in 1:200){
+#   print(k)
+#   print(sum(cells$bug))
+#   cells <- cells %>% bind_rows(layer(k)) %>% bind_rows(layer(-k))  
+#   cells %>% 
+#     rowwise %>% 
+#     mutate(step1=calcNewState(x,y,level))%>% 
+#     select(x,y,level,step1) %>% 
+#     rename(bug=step1)->cells
+# }
+# sum(cells$bug)
+# step51 %>% filter(abs(level)<27) -> cells
+# cells %>% 
+#   rowwise %>% 
+#   mutate(step1=calcNewState(x,y,level))%>% 
+#   select(x,y,level,step1) %>% 
+#   rename(bug=step1)->cells
+# cells->step52
+for(k in 1:100){
   print(k)
   cells <- cells %>% bind_rows(layer(k)) %>% bind_rows(layer(-k))  
   cells %>% 
